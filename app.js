@@ -1,23 +1,13 @@
-const age = '18';
-console.log(age + 5);//185
-console.log(Number(age) + 5);//23
-console.log(age * 3);//54
-const userName = 'Vasia';
-console.log(Number(userName) + 5);//NaN
-console.log(typeof NaN);//number
-console.log(String(4) + 7);//47
-console.log(Boolean('') + 10);//10
-console.log(Boolean('dhgsfhsdgf') + 10);//11
-console.log(true + 10);//11
+const money = 5;
 
-const a = 2 + '10';
-console.log(a - 10);//200
+if (money > 50) {
+	console.log('Can buy our product');
+} else if (money > 25) {
+	console.log('Can buy half of our product');
+} else if (money > 5) {
+	console.log('Can buy a small portion of our product');
+} else {
+	console.log('Not enough money');
+}
 
-//False from other type
-
-console.log(Boolean(0));
-console.log(Boolean(''));
-console.log(Boolean(undefined));
-console.log(Boolean(null));
-console.log(Boolean(Number('fdff')));
-console.log(Boolean(NaN));
+console.log('Conclusion')
