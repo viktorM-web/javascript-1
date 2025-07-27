@@ -1,11 +1,14 @@
-const deposit = 12000;
-const rate = 0.07;
-const depositLength = 24;
-const houseCost = 13500;
+const secretNumber = '7';
 
-const result = deposit * (1 + rate / 12) ** 24;
-if (result >= houseCost) {
-	console.log(`We save: ${result}. Can buy. Rest ${result - houseCost}`);
-} else {
-	console.log(`We save: ${result}. Cann't buy(((`);
+if (secretNumber == 7) {
+	console.log('equal exclude type')
+}
+
+if (Number(secretNumber) === 7) {
+	console.log('equal include type and value')
+}
+
+const q = prompt('Input number');
+if (Number(q) === 7) {
+	console.log('equal exclude type')
 }
