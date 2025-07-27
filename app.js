@@ -1,47 +1,31 @@
-function logName() {
-	console.log(`My name is Victor`);
+const age = 25;
+const isWork = false;
+const money = 1910;
+const price = 2000;
+
+function getCredit(age, isWork = false) {
+	if (age > 24 && isWork) {
+		console.log('can get 500$ in credit');
+		return 500;
+	} else if (age > 24) {
+		console.log('can get 100$ in credit');
+		return 100;
+	}
+	console.log('credit denied');
+	return 0;
 }
 
-const a = logName();
-console.log(a);//undefined
-
-function logName(name, surname) {
-	console.log(`My name is ${name} ${surname}`);
+function canBuyMacBook(age, isWork, money, price) {
+	if (money > price) {
+		console.log('without credit');
+		return true;
+	}
+	money += getCredit(age, isWork);
+	if (money > price) {
+		console.log('with credit');
+		return true;
+	}
+	return false;
 }
 
-logName('Victor', 'Malahov');
-
-function countDepositSum(depositInUSD, month, rate) {
-	return depositInUSD * (1 + rate / 12) ** month;
-}
-
-const example1 = countDepositSum(1000, 24, 0.12);
-console.log(example1);
-
-console.log(countDepositSum(1000, 48, 0.10));
-
-//anonymous function
-
-function powerOfTwo(numb) {
-	return numb * numb;
-}
-
-console.log(powerOfTwo(5));
-
-const poft = function (numb) {
-	return numb * numb;
-}
-
-console.log(poft(6));
-
-//arrow function
-
-const poft2 = (num) => num * num;
-// const poft2 = num => num * num; //same
-
-const poft3 = num => {
-	console.log(num);
-	return num * num;
-};
-
-console.log(poft3(8));
+console.log(`Can I buy MacBook ${canBuyMacBook(age, isWork, money, price)}`);
