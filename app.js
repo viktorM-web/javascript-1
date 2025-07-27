@@ -12,3 +12,12 @@ console.log(true + 10);//11
 
 const a = 2 + '10';
 console.log(a - 10);//200
+
+//False from other type
+
+console.log(Boolean(0));
+console.log(Boolean(''));
+console.log(Boolean(undefined));
+console.log(Boolean(null));
+console.log(Boolean(Number('fdff')));
+console.log(Boolean(NaN));
