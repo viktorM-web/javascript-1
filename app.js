@@ -1,11 +1,11 @@
-const res = prompt('How much 7 + or - 15');
+const isAdmin = false;
+const canWrite = true;
 
-switch (true) {
-	case res === 'I am not a robot':
-	case Number(res) === 22:
-	case Number(res) === -8:
-		console.log('Success');
-		break;
-	default:
-		console.log('You are robot!!!');
-}
+console.log(`System file ${isAdmin && canWrite}`);
+console.log(`Usual file ${isAdmin || canWrite}`);
+console.log(`Invert administrator access ${!isAdmin}`);
+
+const isEdited = true;
+const isSupperAdmin = false;
+
+console.log(`System file with editing ${isAdmin && canWrite && (!isEdited || isSupperAdmin)}`);
