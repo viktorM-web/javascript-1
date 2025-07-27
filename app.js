@@ -1,13 +1,11 @@
-const money = 5;
+const deposit = 12000;
+const rate = 0.07;
+const depositLength = 24;
+const houseCost = 13500;
 
-if (money > 50) {
-	console.log('Can buy our product');
-} else if (money > 25) {
-	console.log('Can buy half of our product');
-} else if (money > 5) {
-	console.log('Can buy a small portion of our product');
+const result = deposit * (1 + rate / 12) ** 24;
+if (result >= houseCost) {
+	console.log(`We save: ${result}. Can buy. Rest ${result - houseCost}`);
 } else {
-	console.log('Not enough money');
+	console.log(`We save: ${result}. Cann't buy(((`);
 }
-
-console.log('Conclusion')
