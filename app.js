@@ -1,17 +1,14 @@
-const projectName = 'Site store';
-const price = 2000;
-const author = 'Vasilii Pupcin';
+const age = '18';
+console.log(age + 5);//185
+console.log(Number(age) + 5);//23
+console.log(age * 3);//54
+const userName = 'Vasia';
+console.log(Number(userName) + 5);//NaN
+console.log(typeof NaN);//number
+console.log(String(4) + 7);//47
+console.log(Boolean('') + 10);//10
+console.log(Boolean('dhgsfhsdgf') + 10);//11
+console.log(true + 10);//11
 
-const template = author + ' order ' + projectName + ' by price ' + price;
-console.log(template);
-
-const template2 = `${author} order ${projectName} by price ${price}`;
-console.log(template2);
-
-const template3 = 'Project \n' + 'Price: ' + price + '$';
-console.log(template3);
-
-const template4 = `Project
-Price: ${price}$`;
-
-console.log(template4);
+const a = 2 + '10';
+console.log(a - 10);//200
