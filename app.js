@@ -1,23 +1,17 @@
-const userData = ['Anton', 18, 'Moscow'];
+const url = 'https://purplescholl.ru/course/javaskript';
+const url1 = 'https://purpleschollru/course/javaskript';
 
-function getData() {
-	return ['Anton', 18, 'Moscow'];
+function getUrlParts(url) {
+	const [protocol, _, host, ...path] = url.split('/');
+	if (protocol === 'https:' || protocol === 'http:') {
+		if (!host.includes('.')) {
+			return;
+		}
+		console.log(protocol, _, host, ...path);
+		console.log(`Protocol: ${protocol.split(':')[0]}`);
+		console.log(`Host: ${host}`);
+		console.log(`Path inside site: /${path.join('/')}`);
+	}
 }
 
-// const userName = userData[0];
-// const age = userData[1];
-// const city = userData[2];
-
-// const [userName, age] = getData();
-// console.log(userName, age); //Anton 18
-
-const [userName, _, city] = getData();
-
-console.log(userName, city);
-
-const data = [1, 2, 3, 4, 5, 6];
-// const [one, two, others] = data;
-// console.log(one, two, others); //1 2 3
-
-const [one, two, ...others] = data;
-console.log(one, two, others); //1 2 [3, 4, 5, 6]
+getUrlParts(url1);
