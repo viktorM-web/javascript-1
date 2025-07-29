@@ -10,26 +10,22 @@ function remove(task) {
 		console.log(`${task} not found in to ${tasks}`)
 		return;
 	}
-	tasks.splice(index, 1)
+	return tasks.splice(index, 1)
 }
 
 function prioritize(task) {
-	const index = tasks.indexOf(task);
-	if (index === -1) {
-		console.log(`${task} not found in to ${tasks}`)
-		return;
+	const result = remove(task);
+	if (result) {
+		tasks.unshift(result[0]);
 	}
-	const taskFromList = tasks[index];
-	tasks.splice(index, 1);
-	tasks.unshift(taskFromList);
 }
 
 add('Task2');
 add('Task3');
 console.log(tasks);
 
-remove('Task4');
+remove('Task2');
 console.log(tasks);
 
-prioritize('Task5');
+prioritize('Task3');
 console.log(tasks);
