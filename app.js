@@ -1,21 +1,21 @@
-const roles = ['admin', 'user', 'superuser'];
-const userInfo = ['Anna', 25];
-console.log(userInfo);
-console.log(roles[0]);
-console.log(roles.length);
-console.log(roles[roles.length - 1]);
+const users = ['Anna', 'Vika', 'Katia'];
+console.log(users);
+users[2] = 'Kristina';
+console.log(users);
+users[4] = 'Nikita';
+console.log(users);//['Anna', 'Vika', 'Kristina', empty, 'Nikita']
 
-console.log(roles.at(0));
-console.log(roles.at(-1));
+const arrayLength = users.push('Evgenii');
+console.log(users);
+console.log(arrayLength);
 
-const userName = new Array('Vasia', 'Petia', 'Katia');
-console.log(userName);
+console.log(users.unshift('Vasia'));
+console.log(users);
 
-const userAge = [2040 - 2022, 10 > 0 ? 5 : 0];
-console.log(userAge);
+const lastElement = users.pop();
+console.log(lastElement);
+console.log(users);
 
-function square(el1) {
-	return el1 * el1;
-}
-
-console.log(square([1, 2, 3]));//NaN
+const firstElement = users.shift();
+console.log(firstElement);
+console.log(users);
