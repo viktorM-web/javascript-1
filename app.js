@@ -1,31 +1,23 @@
-const tasks = ['Task1'];
+const userData = ['Anton', 18, 'Moscow'];
 
-function add(newTask) {
-	tasks.push(newTask);
+function getData() {
+	return ['Anton', 18, 'Moscow'];
 }
 
-function remove(task) {
-	const index = tasks.indexOf(task);
-	if (index === -1) {
-		console.log(`${task} not found in to ${tasks}`)
-		return;
-	}
-	return tasks.splice(index, 1)
-}
+// const userName = userData[0];
+// const age = userData[1];
+// const city = userData[2];
 
-function prioritize(task) {
-	const result = remove(task);
-	if (result) {
-		tasks.unshift(result[0]);
-	}
-}
+// const [userName, age] = getData();
+// console.log(userName, age); //Anton 18
 
-add('Task2');
-add('Task3');
-console.log(tasks);
+const [userName, _, city] = getData();
 
-remove('Task2');
-console.log(tasks);
+console.log(userName, city);
 
-prioritize('Task3');
-console.log(tasks);
+const data = [1, 2, 3, 4, 5, 6];
+// const [one, two, others] = data;
+// console.log(one, two, others); //1 2 3
+
+const [one, two, ...others] = data;
+console.log(one, two, others); //1 2 [3, 4, 5, 6]
