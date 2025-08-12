@@ -1,17 +1,9 @@
-const url = 'https://purplescholl.ru/course/javaskript';
-const url1 = 'https://purpleschollru/course/javaskript';
+const array1 = ["!!!", "JS", "love", "I"];
+const resultArray = [];
 
-function getUrlParts(url) {
-	const [protocol, _, host, ...path] = url.split('/');
-	if (protocol === 'https:' || protocol === 'http:') {
-		if (!host.includes('.')) {
-			return;
-		}
-		console.log(protocol, _, host, ...path);
-		console.log(`Protocol: ${protocol.split(':')[0]}`);
-		console.log(`Host: ${host}`);
-		console.log(`Path inside site: /${path.join('/')}`);
-	}
+for (let index = array1.length - 1; index >= 0; index--) {
+	resultArray.push(array1[index]);
 }
 
-getUrlParts(url1);
+console.log(resultArray.join(' '));
+console.log(array1.reverse().join(' '));
