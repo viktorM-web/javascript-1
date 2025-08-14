@@ -1,13 +1,10 @@
-const operations = [100, -20, 7, -30, 50];
+const operations = [1, 4, 4, 10];
 
-let balance = 0;
-
-for (const operation of operations) {
-	balance += operation;
-}
-console.log(balance);
-
-const balance2 = operations.reduce((acc, value) => acc += value);
-console.log(balance2);
-
-console.log(operations.reduce((acc, value) => acc < value ? acc : value));
+console.log(
+	operations.reduce(
+		(aver, val, i) =>
+			i != operations.length - 1
+				? aver += val
+				: (aver += val) / operations.length
+	)
+);
