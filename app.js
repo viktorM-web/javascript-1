@@ -1,12 +1,10 @@
-const arr = [2, 4, 4, 10, 20];
+const prices = [[2, 4], [3, 4], [[10, 20], [40, 50]]];
 
-function some(array, element) {
-	const res = array.find(el => el === element);
-	return res === undefined ? false : true;
-}
+let res = prices.flat();//prices.flat(1)
+console.log(res);//[2 ,4 ,3, 4, Array(2), Array(2)]
 
-console.log(some(arr, 0));
-console.log(arr.some(el => el === 0));
+res = prices.flat(2);
+console.log(res);//[2 ,4 ,3, 4, 10, 20, 40, 50]
 
-console.log(some(arr, 10));
-console.log(arr.some(el => el === 10));
+let res2 = prices.flatMap(el => el.concat(1));
+console.log(res2);//[2 ,4, 1, 3, 4, 1, Array(2), Array(2), 1]
