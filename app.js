@@ -1,34 +1,12 @@
-const operations = [2, 4, 4, 10, 20];
+const arr = [2, 4, 4, 10, 20];
 
-console.log(
-	operations.reduce(
-		(aver, val, i) =>
-			i != operations.length - 1
-				? aver += val
-				: (aver += val) / operations.length
-	)
-);
+function some(array, element) {
+	const res = array.find(el => el === element);
+	return res === undefined ? false : true;
+}
 
-console.log(
-	operations.find(
-		el => el > 5
-	)
-);// 10
+console.log(some(arr, 0));
+console.log(arr.some(el => el === 0));
 
-console.log(
-	operations.findIndex(
-		el => el > 5
-	)
-);// 3
-
-console.log(
-	operations.find(
-		el => el > 90
-	)
-);//undefined
-
-console.log(
-	operations.findIndex(
-		el => el > 90
-	)
-);//-1
+console.log(some(arr, 10));
+console.log(arr.some(el => el === 10));
