@@ -1,6 +1,13 @@
-const operation = [100, -20, 7, -20, 50];
+const operations = [100, -20, 7, -30, 50];
 
-operation
-	.filter(num => num > 0)
-	.map(num => num * 60)
-	.forEach(num => console.log(num));
+let balance = 0;
+
+for (const operation of operations) {
+	balance += operation;
+}
+console.log(balance);
+
+const balance2 = operations.reduce((acc, value) => acc += value);
+console.log(balance2);
+
+console.log(operations.reduce((acc, value) => acc < value ? acc : value));
