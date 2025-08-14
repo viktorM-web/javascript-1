@@ -1,10 +1,15 @@
-const prices = [[2, 4], [3, 4], [[10, 20], [40, 50]]];
+const users = ['Vasia', 'Masha', 'Katia', 'Ania'];
 
-let res = prices.flat();//prices.flat(1)
-console.log(res);//[2 ,4 ,3, 4, Array(2), Array(2)]
+console.log(users);//['Vasia', 'Masha', 'Katia', 'Ania']
+users.sort();
+console.log(users);//['Ania', 'Katia', 'Masha', 'Vasia']
 
-res = prices.flat(2);
-console.log(res);//[2 ,4 ,3, 4, 10, 20, 40, 50]
+const operations = [100, -300, -100, 50, 50, 480];
 
-let res2 = prices.flatMap(el => el.concat(1));
-console.log(res2);//[2 ,4, 1, 3, 4, 1, Array(2), Array(2), 1]
+console.log(operations);//[100, -300, -100, 50, 480]
+operations.sort();
+console.log(operations);//[-100, -300, 100, 480, 50]
+
+operations.sort((a, b) => a - b);
+
+console.log(operations);//[480, 100, 50, 50, -100, -300]
