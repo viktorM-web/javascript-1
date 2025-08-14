@@ -1,14 +1,6 @@
-const transactionInUSD = [10, -7, 50, -10, 100];
+const operation = [100, -20, 7, -20, 50];
 
-const transactionInRUB = [];
-
-for (const transaction of transactionInUSD) {
-	transactionInRUB.push(transaction * 60);
-}
-
-console.log(transactionInRUB);
-console.log(transactionInUSD);
-
-const transactionInRUB2 =
-	transactionInUSD.map(transaction => transaction * 60);
-console.log(transactionInRUB2);
+operation
+	.filter(num => num > 0)
+	.map(num => num * 60)
+	.forEach(num => console.log(num));
