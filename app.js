@@ -1,4 +1,4 @@
-const operations = [1, 4, 4, 10];
+const operations = [2, 4, 4, 10, 20];
 
 console.log(
 	operations.reduce(
@@ -8,3 +8,27 @@ console.log(
 				: (aver += val) / operations.length
 	)
 );
+
+console.log(
+	operations.find(
+		el => el > 5
+	)
+);// 10
+
+console.log(
+	operations.findIndex(
+		el => el > 5
+	)
+);// 3
+
+console.log(
+	operations.find(
+		el => el > 90
+	)
+);//undefined
+
+console.log(
+	operations.findIndex(
+		el => el > 90
+	)
+);//-1
