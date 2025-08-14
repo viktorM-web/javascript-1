@@ -1,16 +1,9 @@
-// function power(pow) {
-// 	return function (num) {
-// 		return num ** pow;
-// 	}
-// }
+const score = [5, 10, 0, 15];
 
-const power = pow => num => num ** pow;
+for (const [i, el] of score.entries()) {
+	console.log(`Raund ${i + 1}: ${el}`);
+}
 
-const powerOfTwo = power(2);
-console.log(powerOfTwo(5));
-console.log(powerOfTwo(10));
+score.forEach(el => console.log(`Raund : ${el}`));
 
-const powerOfThree = power(3);
-console.log(powerOfThree(5));
-
-console.log(power(5)(4));
+score.forEach((el, i) => console.log(`Raund ${i + 1}: ${el}`))
