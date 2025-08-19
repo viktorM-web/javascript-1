@@ -1,9 +1,9 @@
-const userFullName = 'Vasia Pupkin Ivanovich';
-console.log(userFullName.split(' '));
-const [firstName, familyName, lastName] = userFullName.split(' ');
-console.log(firstName);//Vasia
-console.log(familyName);//Pupkin
-console.log(lastName);//Ivanovich
+const film = 'Star Wars';
 
-const arr = ['You', 'know', 'JS'];
-console.log(arr.join(' '));//You know JS
+console.log(film.padStart(20));//'           Star Wars'
+console.log(film.padStart(20, '*'));//'***********Star Wars'
+console.log(film.padStart(20).length);//20
+console.log(film.padEnd(20));//'Star Wars           '
+console.log(film.padEnd(20, '*'));//'Star Wars***********'
+console.log(film.padEnd(20).length);//20
+console.log(film.repeat(20));//Star WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar Wars
