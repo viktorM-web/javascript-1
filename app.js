@@ -1,13 +1,15 @@
-const arr = [1, 2, 3, 4, 5];
+const userName = 'Vasya Pupkina';
 
-console.log(new Array(1, 2, 3, 4, 5));// [1, 2, 3, 4, 5]
+console.log(userName);//'Vasya Pupkina'
+console.log(userName[0] + userName[6]);//'VP'
+console.log(userName.charAt(6));//'P'
 
-const arr2 = new Array(5)
-console.log(arr2);//[empty × 5]
+console.log(userName.length);//13
+console.log(userName.indexOf('u'));//7
+console.log(userName.indexOf('upk'));//7
+console.log(userName.indexOf('upp'));//-1
 
-arr2.fill(1, 0, 3);
-arr2.fill(2, 3);
-console.log(arr2);//[1, 1, 1, 2, 2]
+console.log(userName.lastIndexOf('a'));//12
 
-const arr3 = Array.from({ length: 5 }, (cur, i) => i + 1);
-console.log(arr3);//[1, 2, 3, 4, 5]
+console.log(userName.slice(5));//'Pupkina'
+console.log(userName.slice(7, 9));//up'
