@@ -1,9 +1,8 @@
-const film = 'Star Wars';
+const card = '234283450345853';
 
-console.log(film.padStart(20));//'           Star Wars'
-console.log(film.padStart(20, '*'));//'***********Star Wars'
-console.log(film.padStart(20).length);//20
-console.log(film.padEnd(20));//'Star Wars           '
-console.log(film.padEnd(20, '*'));//'Star Wars***********'
-console.log(film.padEnd(20).length);//20
-console.log(film.repeat(20));//Star WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar WarsStar Wars
+function hideCardNumbet(cardNamber) {
+	const lastDigits = cardNamber.slice(-4);
+	console.log(lastDigits.padStart(cardNamber.length, '*'))
+}
+
+hideCardNumbet(card);//***********5853
