@@ -1,8 +1,17 @@
-const userName = 'Vasya aka Terminator 3000 Pupkina';
+const userName = 'Vasya Pupkina';
 
-const words = userName.split(' ');
-console.log(`${words[0]} ${words[words.length - 1]}`);//Vasya Pupkina
+console.log(userName.includes('a'));//true
+console.log(userName.startsWith('V'));//true
+console.log(userName.endsWith('na'));//true
 
-const name1 = userName.slice(0, userName.indexOf(' '))
-	+ userName.slice(userName.lastIndexOf(' '));
-console.log(name1);//Vasya Pupkina
+console.log(userName.toLowerCase());//vasya pupkina
+console.log(userName.toUpperCase());//VASYA PUPKINA
+console.log(userName.replace('V', 'W'));//Wasya Pupkina
+console.log(userName.replace('P', 'Z'));//Vasya Zupkina
+
+console.log(userName.replace('a', 'i'));//Visya Pupkina
+console.log(userName.replaceAll('a', 'i'));//Visyi Pupkini
+console.log(userName.replace(/a/g, 'i'));//Visyi Pupkini
+
+const str = '	dfdfd dfdf \n';
+console.log(str.trim());//dfdfd dfdf
