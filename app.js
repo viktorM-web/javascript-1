@@ -1,39 +1,33 @@
-const user = {
-	name: 'Vasia',
-	surname: 'Pupkin',
-	age: 24,
-	skills: [
-		'Programming',
-		'Cooking'
-	],
-	eduBasic: 'School',
-	eduPro: 'MFTI',
-};
+const users = [
+	{ name: 'Vasia', age: 30 },
+	{ name: 'Katia', age: 18 },
+	{ name: 'Anna', age: 40 },
+	{ name: 'Petia', age: 25 }
+];
 
-console.log(user.city);//undefined
-console.log(user.skills);//['Programming', 'Cooking']
-console.log(user['skills']);//['Programming', 'Cooking']
-const level = 'Pro';
-console.log(user['edu' + level]);//MFTI
+console.log(users.sort((a, b) => a.age > b.age ? 1 : -1));
 
-user.city = 'Moscow';
-user['city'] = 'Moscow';
-console.log(user.city);//Moscow
+const users2 = [
+	{
+		name: 'Vasia',
+		surname: 'Pupkin',
+		age: 30,
+		skills: ['Development', 'DevOps']
+	},
+	{
+		name: 'Katia',
+		surname: 'Belova',
+		age: 18,
+		skills: ['Design']
+	}
+];
 
-user.age = 30;
-user['age'] = 30;
-console.log(user);
-/*
-{
-"name": "Vasia",
-	"surname": "Pupkin",
-	"age": 30,
-	"skills": [
-		"Programming",
-		"Cooking"
-		],
-	"eduBasic": "School",
-	"eduPro": "MFTI",
-	"city": "Moscow"
+const newUsers = users2.map(user => {
+	return {
+		fullName: `${user.name} ${user.surname}`,
+		skillNum: user.skills.length
+	};
 }
-*/
+);
+
+console.log(newUsers);
