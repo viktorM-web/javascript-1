@@ -1,40 +1,27 @@
-const wallet = {
-	balance: 0,
-	operations: [],
-
-	income: function (sum, reason) {
-		this.balance = this.balance + sum;
-		this.operations.push(
-			{
-				reason: reason,
-				ammount: sum
-			}
-		);
+const cities = {
+	msk: {
+		let: 200,
+		tem: 25
 	},
-	pay: function (sum, reason) {
-		if (sum <= this.balance) {
-			this.balance = this.balance - sum;
-			this.operations.push(
-				{
-					reason: reason,
-					ammount: -sum
-				}
-			);
-			return true;
-		} else {
-			return false;
-		}
-
-	},
-	getAmountOfOperation: function () {
-		return this.operations.length;
+	spb: {
+		let: 100,
+		tem: 20
 	}
-}
+};
 
-wallet.income(1000, 'Salary');
-wallet.pay(9000, 'Apartment');
-wallet.pay(5, 'Taxi');
-wallet.pay(57, 'Restarun');
-console.log(wallet.getAmountOfOperation());
-console.log(wallet.balance)
-console.log(wallet.operations)
+let sumTemp = 0;
+let citiesCount = 0;
+
+for (const key in cities) {
+	console.log(key);
+	citiesCount++;
+	sumTemp += cities[key].tem;
+}
+console.log(sumTemp / citiesCount);
+
+sumTemp = 0;
+citiesCount = Object.keys(cities).length;
+for (const key of Object.keys(cities)) {
+	sumTemp += cities[key].tem
+}
+console.log(sumTemp / citiesCount);
