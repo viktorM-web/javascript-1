@@ -1,33 +1,40 @@
-const users = [
-	{ name: 'Vasia', age: 30 },
-	{ name: 'Katia', age: 18 },
-	{ name: 'Anna', age: 40 },
-	{ name: 'Petia', age: 25 }
-];
+const wallet = {
+	balance: 0,
+	operations: [],
 
-console.log(users.sort((a, b) => a.age > b.age ? 1 : -1));
-
-const users2 = [
-	{
-		name: 'Vasia',
-		surname: 'Pupkin',
-		age: 30,
-		skills: ['Development', 'DevOps']
+	income: function (sum, reason) {
+		this.balance = this.balance + sum;
+		this.operations.push(
+			{
+				reason: reason,
+				ammount: sum
+			}
+		);
 	},
-	{
-		name: 'Katia',
-		surname: 'Belova',
-		age: 18,
-		skills: ['Design']
+	pay: function (sum, reason) {
+		if (sum <= this.balance) {
+			this.balance = this.balance - sum;
+			this.operations.push(
+				{
+					reason: reason,
+					ammount: -sum
+				}
+			);
+			return true;
+		} else {
+			return false;
+		}
+
+	},
+	getAmountOfOperation: function () {
+		return this.operations.length;
 	}
-];
-
-const newUsers = users2.map(user => {
-	return {
-		fullName: `${user.name} ${user.surname}`,
-		skillNum: user.skills.length
-	};
 }
-);
 
-console.log(newUsers);
+wallet.income(1000, 'Salary');
+wallet.pay(9000, 'Apartment');
+wallet.pay(5, 'Taxi');
+wallet.pay(57, 'Restarun');
+console.log(wallet.getAmountOfOperation());
+console.log(wallet.balance)
+console.log(wallet.operations)
