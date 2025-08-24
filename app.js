@@ -1,45 +1,39 @@
-const warehouse = {
-	goods: [],
-	findGoodById: function (id) {
-		return this.goods.find(g => g.id == id);
-	},
-	addGood: function (good) {
-		if (this.findGoodById(good.id)) {
-			console.log('This good is alrady on the warehouse');
-			return;
-		}
-		this.goods.push(good);
-	},
-	getWeight: function () {
-		return this.goods.reduce(
-			(weight, good) => weight += good?.weight?.kg ? good.weight.kg : 0
-			, 0);
+'use strict'
 
-	}
-}
-
-const car = {
-	id: 1,
-	weight: {
-		kg: 1000
-	},
-	brand: 'Ford'
-};
-const chair = {
-	id: 3,
-	weight: {
-		kg: 2
+const audi = {
+	brand: 'Audi',
+	model: 'A3',
+	years: 2021,
+	damages: [],
+	addDamage(part, rate) {
+		console.log(
+			`Vehicle ${this.brand} ${this.model} ${this.years} is got damage:  ${part}  ${rate}`
+		);
+		this.damages.push(
+			{
+				part,
+				rate
+			}
+		)
 	}
 };
-const paper = {
-	id: 5,
-	color: 'red'
+
+audi.addDamage('hood', 1);
+
+const bmw = {
+	brand: 'BMW',
+	model: 'X5',
+	years: 2022,
+	damages: []
 };
+bmw.addDamage = audi.addDamage;
+bmw.addDamage('bumper', 2);
 
-warehouse.addGood(car);
-warehouse.addGood(car);
-warehouse.addGood(chair);
-warehouse.addGood(paper);
+const addDamageFunc = audi.addDamage;
+// addDamageFunc('bumper', 2);//Uncaught TypeError
 
-console.log(warehouse.findGoodById(3));
-console.log(warehouse.getWeight());
+addDamageFunc.call(audi, 'bumper', 2);// same like audi.addDamage('bumper', 2)
+addDamageFunc.call(audi, ...['bumper', 2]);// same like audi.addDamage('bumper', 2)
+addDamageFunc.apply(audi, ['bumper', 2]);// same like audi.addDamage('bumper', 2)
+
+addDamageFunc.apply(bmw, ['bumper', 2]);// same like bmw.addDamage('bumper', 2)
