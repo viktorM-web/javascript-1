@@ -3,37 +3,42 @@
 const audi = {
 	brand: 'Audi',
 	model: 'A3',
-	years: 2021,
-	damages: [],
+	damages: []
+};
+
+
+const carManipulation = {
 	addDamage(part, rate) {
-		console.log(
-			`Vehicle ${this.brand} ${this.model} ${this.years} is got damage:  ${part}  ${rate}`
-		);
-		this.damages.push(
-			{
-				part,
-				rate
-			}
-		)
+		this.damages.push({ part, rate });
+		console.log(`add damage for ${this.brand} ${this.model}`);
 	}
 };
 
-audi.addDamage('hood', 1);
+const addDamageAudi = carManipulation.addDamage.bind(audi);
 
-const bmw = {
-	brand: 'BMW',
-	model: 'X5',
-	years: 2022,
-	damages: []
-};
-bmw.addDamage = audi.addDamage;
-bmw.addDamage('bumper', 2);
+addDamageAudi('front', 9);//add damage for Audi A3
+console.log(audi);
 
-const addDamageFunc = audi.addDamage;
-// addDamageFunc('bumper', 2);//Uncaught TypeError
-
-addDamageFunc.call(audi, 'bumper', 2);// same like audi.addDamage('bumper', 2)
-addDamageFunc.call(audi, ...['bumper', 2]);// same like audi.addDamage('bumper', 2)
-addDamageFunc.apply(audi, ['bumper', 2]);// same like audi.addDamage('bumper', 2)
-
-addDamageFunc.apply(bmw, ['bumper', 2]);// same like bmw.addDamage('bumper', 2)
+const addBodyDamageAudi = carManipulation.addDamage.bind(audi, 'body');
+addBodyDamageAudi(3);//add damage for Audi A3
+console.log(audi);
+/*
+brand
+: 
+"Audi"
+damages
+: 
+Array(2)
+0
+: 
+{part: 'front', rate: 9}
+1
+: 
+{part: 'body', rate: 3}
+length
+: 
+2
+[[Prototype]]
+: 
+Array(0
+*/
