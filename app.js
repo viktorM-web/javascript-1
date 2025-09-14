@@ -37,20 +37,14 @@ function submitByEnter(e) {
 		submitForm();
 	}
 };
-// function submitByEnter() {
-// 	document.querySelector('.input').addEventListener('keydown', (e) => {
-// 		if (e.code == 'Enter') {
-// 			submitForm();
-// 		}
-// 	});
-// }
+const panelText = 'Panel';
+const panelClass = 'button';
+const newElement = document.createElement('div');
+newElement.setAttribute('user-id', 1);
+newElement.classList.add('panel');
+// newElement.innerText = 'button';
+newElement.innerHTML = `<button class = "${panelClass}">${panelText}</button>`;
+document.querySelector('.test').appendChild(newElement);
 
-// console.log(document.querySelector('.one > span').innerText)
-console.log(document.querySelectorAll('.one')[0].innerText)
-// console.log(document.querySelector('.one ~ div').innerText)
-console.log(document.querySelectorAll('.one')[1].innerText)
 
-// console.log(document.querySelector('#two').innerText)
-console.log(document.getElementById('two').innerText)
-console.log(document.querySelector('[user-id="4"]').innerText)
 
