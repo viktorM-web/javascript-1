@@ -5,6 +5,10 @@ function submitForm() {
 	if (!input) {
 		return;
 	}
+
+	const value = JSON.parse(`{"text":"${input}"}`);
+	localStorage.setItem('text', JSON.stringify(value));
+
 	document.querySelector('.panel').innerText = input;
 	document.querySelector('.input').value = '';
 	document.querySelector('.notification').classList.remove('notification');
@@ -16,13 +20,7 @@ function submitByEnter(e) {
 	}
 };
 
-localStorage.setItem('token1', 1);
-localStorage.setItem('token2', 'dfsdfsdf');
-localStorage.setItem('token2', true);
-
-const token1 = localStorage.getItem('token2')
-
-console.log(typeof token1);//string
-localStorage.removeItem('token1');
-
-localStorage.clear();
+const obj = JSON.parse('{"a":1}');
+console.log(obj.a);
+const str = JSON.stringify(obj);
+console.log(str);
