@@ -1,9 +1,0 @@
-{
-	"key":"string",
-	"num":5,
-	"boll":false,
-	"arr":["s","d"],
-	"obj": {
-		"innerObj":3
-	}
-}
