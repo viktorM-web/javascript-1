@@ -1,26 +1,22 @@
 'use strict';
 
-function submitForm() {
-	const input = document.querySelector('.input').value;
-	if (!input) {
-		return;
+let habbits = [];
+const HABBIT_KEY = 'HABBIT_KEY';
+
+/* utils */
+
+function loadData() {
+	const habbitsString = localStorage.getItem(HABBIT_KEY);
+	const habbitArray = JSON.parse(habbitsString);
+	if (Array.isArray(habbitArray)) {
+		habbits = habbitArray;
 	}
+}
 
-	const value = JSON.parse(`{"text":"${input}"}`);
-	localStorage.setItem('text', JSON.stringify(value));
+function saveData() {
+	localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
+}
 
-	document.querySelector('.panel').innerText = input;
-	document.querySelector('.input').value = '';
-	document.querySelector('.notification').classList.remove('notification');
-};
-
-function submitByEnter(e) {
-	if (e.code == 'Enter') {
-		submitForm();
-	}
-};
-
-const obj = JSON.parse('{"a":1}');
-console.log(obj.a);
-const str = JSON.stringify(obj);
-console.log(str);
+(() => {
+	loadData();
+})()
