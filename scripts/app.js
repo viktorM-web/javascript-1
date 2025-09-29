@@ -77,8 +77,8 @@ function rerenderDays(activeHabbit) {
 						<div class="habbit__comment">
 							${activeHabbit.days[index].comment}
 						</div>
-						<button class="habbit__delete">
-							<img src="./images/delete.svg" alt="Delete day ${Number(index) + 1}">
+						<button class="habbit__delete" onclick="removeDay(${Number(index)})">
+							<img name="numberDay" value="${Number(index) + 1}" src="./images/delete.svg" alt="Delete day ${Number(index) + 1} ">
 						</button>`;
 		page.content.daysContainer.appendChild(element);
 	}
@@ -97,6 +97,13 @@ function rerender(activeHabbitId) {
 }
 
 /* work with days */
+function removeDay(index) {
+	habbits.find(habbit => habbit.id === globalActiveHabbitId)
+		.days.splice(index, 1);
+	rerender(globalActiveHabbitId);
+	saveData();
+}
+
 
 function addDays(event) {
 	const form = event.target;
