@@ -18,7 +18,8 @@ const page = {
 		nextDay: document.querySelector('.habbit__day')
 	},
 	popup: {
-		index: document.getElementById('add-habbit-popup')
+		index: document.getElementById('add-habbit-popup'),
+		iconField: document.querySelector('.popup__form input[name="icon"]')
 	}
 }
 
@@ -44,7 +45,34 @@ function togglePopup() {
 	}
 }
 
+function resetForm(form, fields) {
+	for (const field of fields) {
+		form[field].value = '';
+	}
+}
+
+function validateAndGetFormData(form, fields) {
+	const formData = new FormData(form);
+	const res = {};
+	let isValid = true;
+	for (const field of fields) {
+		const fieldValue = formData.get(field);
+		form[field].classList.remove('error');
+		if (!fieldValue) {
+			form[field].classList.add('error');
+			isValid = false;
+			return;
+		}
+		res[field] = fieldValue;
+	}
+	if (!isValid) {
+		return;
+	}
+	return res;
+}
+
 /* render */
+
 function rerenderMenu(activeHabbit) {
 	// document.querySelector('.menu__list').innerHTML = '';
 	for (const habbit of habbits) {
@@ -102,12 +130,14 @@ function rerender(activeHabbitId) {
 	if (!activeHabbit) {
 		return;
 	}
+	document.location.replace(document.location.pathname + '#' + activeHabbitId);
 	rerenderMenu(activeHabbit);
 	rerenderHead(activeHabbit);
 	rerenderDays(activeHabbit);
 }
 
 /* work with days */
+
 function removeDay(index) {
 	habbits.find(habbit => habbit.id === globalActiveHabbitId)
 		.days.splice(index, 1);
@@ -117,33 +147,63 @@ function removeDay(index) {
 
 
 function addDays(event) {
-	const form = event.target;
-	event.preventDefault(form);
-	const data = new FormData(event.target);
-	const comment = data.get('comment');
-	form['comment'].classList.remove('error');
-	console.log(form);
-	if (!comment) {
-		form['comment'].classList.add('error');
+	event.preventDefault();
+	const data = validateAndGetFormData(event.target, ['comment']);
+	if (!data) {
 		return;
 	}
 	habbits = habbits.map(habbit => {
 		if (habbit.id === globalActiveHabbitId) {
 			return {
 				...habbit,
-				days: habbit.days.concat([{ comment }])
+				days: habbit.days.concat([{ comment: data.comment }])
 			}
 		}
 		return habbit
 	}
 	);
-	form['comment'].value = '';
+	resetForm(event.target, ['comment']);
 	rerender(globalActiveHabbitId);
 	saveData();
 };
 
+/* wirking with new habbit */
+
+function setIcon(context, icon) {
+	page.popup.iconField.value = icon;
+	document.querySelector('.icon.icon_active').classList.remove('icon_active');
+	context.classList.add('icon_active');
+}
+
+function addHabbit(event) {
+	event.preventDefault();
+	event.preventDefault();
+	const data = validateAndGetFormData(event.target, ['name', 'icon', 'target']);
+	if (!data) {
+		return;
+	}
+	const maxId = habbits.reduce((acc, habbit) => acc > habbit.is ? acc : habbit.id, 0);
+	habbits.push({
+		"id": maxId + 1,
+		"icon": data.icon,
+		"name": data.name,
+		"target": data.target,
+		"days": []
+	});
+	resetForm(event.target, ['name', 'target']);
+	togglePopup();
+	rerender(maxId + 1);
+	saveData();
+}
+
 /* init */
 (() => {
 	loadData();
-	rerender(habbits[0].id);
+	const hashId = Number(document.location.hash.replace('#', ''));
+	const urlHabbit = habbits.find(habbit => habbit.id == hashId);
+	if (urlHabbit) {
+		rerender(urlHabbit.id);
+	} else {
+		rerender(habbits[0].id);
+	}
 })()
